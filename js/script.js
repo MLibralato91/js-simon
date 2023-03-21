@@ -19,19 +19,45 @@ setInterval(() => {
     while (numberPc.length < 5) {
         // genero numeri random tra 1 e 100
         num = getRndNumber(1, 100);
+
         if (!numberPc.includes(num))
             numberPc.push(num);
-        
-        
+
+
         // verifico con includes e poi pusho
-    
+
     }
     numbers.innerText = numberPc;
-    
+
 
 }, 5000);
 
-
+setInterval(() => {
+    numbers.classList.add('opacity-0')
+}, 10000);
 
 
 console.log(numberPc);
+
+const btn = document.querySelector('button');
+
+btn.addEventListener('click', checkNumbers);
+
+function checkNumbers() {
+    let one = document.getElementById('one').value;
+    let two = document.getElementById('two').value;
+    let tree = document.getElementById('tree').value;
+    let four = document.getElementById('four').value;
+    let five = document.getElementById('five').value;
+
+    let myNums = [one, two, tree, four, five];
+    
+    console.log(myNums);
+
+    const intersection = numberPc.filter(function(obj){
+        return myNums.indexOf(obj) !== -1;
+        
+    });
+
+    
+}
