@@ -15,7 +15,7 @@ function getRndNumber(min, max) {
 }
 
 
-setInterval(() => {
+setTimeout(() => {
     while (numberPc.length < 5) {
         // genero numeri random tra 1 e 100
         num = getRndNumber(1, 100);
@@ -25,14 +25,14 @@ setInterval(() => {
 
 
         // verifico con includes e poi pusho
-
+        
     }
     numbers.innerText = numberPc;
 
 
 }, 5000);
 
-setInterval(() => {
+setTimeout(() => {
     numbers.classList.add('opacity-0')
 }, 10000);
 
@@ -44,20 +44,26 @@ const btn = document.querySelector('button');
 btn.addEventListener('click', checkNumbers);
 
 function checkNumbers() {
-    let one = document.getElementById('one').value;
-    let two = document.getElementById('two').value;
-    let tree = document.getElementById('tree').value;
-    let four = document.getElementById('four').value;
-    let five = document.getElementById('five').value;
+    let one = parseInt(document.getElementById('one').value);
+    let two = parseInt(document.getElementById('two').value);
+    let tree = parseInt(document.getElementById('tree').value);
+    let four = parseInt(document.getElementById('four').value);
+    let five = parseInt(document.getElementById('five').value);
+    //da sostituire con un selector ALL
 
     let myNums = [one, two, tree, four, five];
-    
+    let correctNums = [];
     console.log(myNums);
 
-    const intersection = numberPc.filter(function(obj){
-        return myNums.indexOf(obj) !== -1;
-        
-    });
+    for (let i = 0; i < myNums.length; i++) {
 
+        if (numberPc.includes(myNums[i])){
+            
+            correctNums.push(myNums[i])
+        }
+            console.log(correctNums);
+    }
     
+    document.querySelector('.results').innerHTML = 
+    `${correctNums} - ${correctNums.length}`;
 }
